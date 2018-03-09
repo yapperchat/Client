@@ -214,7 +214,7 @@ public class Client extends ApplicationWindow {
     			
     			args[0] = temp;
     			Serializable inst = new Alert();
-    			Message message = new Message(("[Alert]:" + args[0]), Misc.getTime(), userName, ID, inst, AttachmentType.INSTRUCTION, args);
+    			Message message = new Message(("[Alert]:" + args[0]), Misc.getTime(), userName, ID, inst, AttachmentType.CLIENTINSTRUCTION, args);
                 serverOut.addNextMessage(message);
     		}
     		
