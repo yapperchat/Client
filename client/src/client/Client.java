@@ -15,6 +15,7 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
 import constraints.Constraints;
+import core.application.Application;
 import core.command.Command;
 import core.message.AttachmentType;
 import core.message.Message;
@@ -22,7 +23,7 @@ import core.misc.Misc;
 import tools.Tools;
 import window.ApplicationWindow;
 
-public class Client extends ApplicationWindow {
+public class Client extends ApplicationWindow implements Application {
     
 	private static final long serialVersionUID = 1L;
 	private static final int portNumber = 4444;
