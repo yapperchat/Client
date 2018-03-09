@@ -45,7 +45,7 @@ public class ServerInThread implements Runnable {
                 				//Load File
                 				break;
                 			case INSTRUCTION:
-                				Instruction inst = (Instruction) input.getAttachment();
+                				ClientInstruction inst = (ClientInstruction) input.getAttachment();
                 				inst.run(client, input.getArgs());
                 				break;
                 		}

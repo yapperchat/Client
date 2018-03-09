@@ -4,9 +4,7 @@ import java.io.Serializable;
 
 import javax.swing.JOptionPane;
 
-import core.command.Instruction;
-
-public class Alert implements Instruction, Serializable {
+public class Alert implements ClientInstruction, Serializable {
 	
 	private static final long serialVersionUID = 1L;
 	
