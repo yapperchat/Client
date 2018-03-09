@@ -48,6 +48,9 @@ public class ServerInThread implements Runnable {
                 				ClientInstruction inst = (ClientInstruction) input.getAttachment();
                 				inst.run(client, input.getArgs());
                 				break;
+                			//Should not happen
+                			case SERVERINSTRUCTION:
+                				break;
                 		}
                 	} catch (ClassNotFoundException e) {
                 		System.out.println(e);
