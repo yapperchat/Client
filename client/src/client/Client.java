@@ -19,6 +19,7 @@ import core.application.Application;
 import core.command.Command;
 import core.message.AttachmentType;
 import core.message.Message;
+import core.message.StartData;
 import core.misc.Misc;
 import tools.Tools;
 import window.ApplicationWindow;
@@ -132,6 +133,11 @@ public class Client extends ApplicationWindow implements Application {
             Thread serverOutThread = new Thread(serverOut);
             serverInThread.start();
             serverOutThread.start();
+            
+            String data = "";
+            
+            this.serverOut.addNextMessage(new StartData(data, this.userName, this.ID));
+            
             while(this.isRunning() && serverOutThread.isAlive() && serverInThread.isAlive()) {
                 if (send) {
                 	String time = Misc.getTime();
