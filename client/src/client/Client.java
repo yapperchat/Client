@@ -134,10 +134,10 @@ public class Client extends ApplicationWindow implements Application {
             serverInThread.start();
             serverOutThread.start();
             
-            String data = "";
+            /*String data = "";
             
             this.serverOut.addNextMessage(new StartData(data, this.userName, this.ID));
-            
+            */
             while(this.isRunning() && serverOutThread.isAlive() && serverInThread.isAlive()) {
                 if (send) {
                 	String time = Misc.getTime();
