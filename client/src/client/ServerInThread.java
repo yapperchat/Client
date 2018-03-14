@@ -33,7 +33,6 @@ public class ServerInThread implements Runnable {
             while (!socket.isClosed() && this.client.isRunning()) {
                 	try {
                 		Message input = (Message) serverIn.readObject();
-                		
                 		switch (input.getAttachmentType()) {
                 			case NONE:
                 				print("[" + input.getTimestamp() + "] " + input.getUser() + ": " + input.getText());
@@ -44,14 +43,11 @@ public class ServerInThread implements Runnable {
                 			case FILE:
                 				//Load File
                 				break;
-                			case CLIENTINSTRUCTION:
+                			case INSTRUCTION:
                 				Instruction inst = (Instruction) input.getAttachment();
                 				inst.run(client, input.getArgs());
                 				break;
-                			//Should not happen
-                			case SERVERINSTRUCTION:
-                				break;
-                		}
+                			}
                 	} catch (ClassNotFoundException e) {
                 		System.out.println(e);
                 	} catch (EOFException e) {

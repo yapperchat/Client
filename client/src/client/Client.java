@@ -94,15 +94,18 @@ public class Client extends ApplicationWindow implements Application {
         textField.setColumns(50);
         textField.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
-        		for (Command command : commands) {
-        			for (String trigger : command.getTriggers()) {
-        				if (trigger.equals(textField.getText().split(" ")[0])) {
-        					process(textField.getText());
-        					return;
+        		if (textField.getText().charAt(0) == '/') {
+        			for (Command command : commands) {
+        				for (String trigger : command.getTriggers()) {
+        					if (trigger.equals(textField.getText().split(" ")[0])) {
+        						process(textField.getText());
+        						return;
+        					}
         				}
         			}
+        		} else {
+        			send = true;
         		}
-        		send = true;
         	}
         });
         c_textField = new Constraints(0,2);
@@ -221,7 +224,7 @@ public class Client extends ApplicationWindow implements Application {
     			
     			args[0] = temp;
     			Serializable inst = new Alert();
-    			Message message = new Message(("[Alert]:" + args[0]), Misc.getTime(), userName, ID, inst, AttachmentType.CLIENTINSTRUCTION, args);
+    			Message message = new Message(("[Alert]:" + args[0]), Misc.getTime(), userName, ID, inst, AttachmentType.INSTRUCTION, args);
                 serverOut.addNextMessage(message);
     		}
     		
