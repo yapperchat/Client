@@ -17,9 +17,9 @@ import javax.swing.JTextField;
 import constraints.Constraints;
 import core.application.Application;
 import core.command.Command;
+import core.command.CommandRegistrar;
 import core.message.AttachmentType;
 import core.message.Message;
-import core.message.StartData;
 import core.misc.Misc;
 import tools.Tools;
 import window.ApplicationWindow;
@@ -31,6 +31,7 @@ public class Client extends ApplicationWindow implements Application {
     public final String ID;
     
     public static Client client = null;
+    private CommandRegistrar commandRegistrar;
     
     private boolean send = false;
     
@@ -51,9 +52,6 @@ public class Client extends ApplicationWindow implements Application {
     
     private JTextField textField;
     private Constraints c_textField;
-    
-    /*private JTextField keyField;
-    private Constraints c_keyField;*/
     
     public static void main(String[] args) {
     	String readName = System.getProperty("user.name");
@@ -119,6 +117,7 @@ public class Client extends ApplicationWindow implements Application {
         pack();
         setVisible(true);
         setResizable(false);
+        this.commandRegistrar = new CommandRegistrar();
     }
     
     public void output(String message) {
@@ -273,6 +272,10 @@ public class Client extends ApplicationWindow implements Application {
     
     public static Client getClient() {
     	return client;
+    }
+    
+    public CommandRegistrar getCommandRegistrar() {
+    	return this.commandRegistrar;
     }
     
     /*public byte[] getKey() {
